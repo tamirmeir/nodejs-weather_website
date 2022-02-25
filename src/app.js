@@ -58,15 +58,29 @@ app.get('/weather', (req, res) => {
             if (error) {
                 return res.send({ error })
             }
-
+            console.log(forecastData)
+        
             res.send({
-                forecast: forecastData,
+                forecastMsg: forecastData.message,
+                forecastIcon:forecastData.icon,
                 location,
                 address: req.query.address
             })
         })
     })
 })
+
+// const message = `The Current Temperature is ${current.temperature} Celsius,
+            // And it Feels Like ${current.temperature} Celsius.[${current.weather_descriptions[0]} 
+            // ${current.weather_icons[0]}]`
+            // callback(undefined,message)
+
+// callback(undefined,{
+//     feelslike:current.feelslike,
+//     temperature:current.temperature,
+//     weatherDesc:current.weather_descriptions[0],
+//     weatherIcons:current.weather_icon[0]
+// })
 
 app.get('/products', (req, res) => {
     if (!req.query.search) {
